@@ -1,36 +1,39 @@
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 
+import AppButton from '../components/AppButton';
+import { homeStyles as styles } from '../constants/homeStyles';
+
 export default function Home() {
+  const router = useRouter();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Sistema de Estacionamento</Text>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>
+          Sistema de Estacionamento
+        </Text>
 
-      <Link
-        href="/proprietario"
-        style={{
-          marginTop: 20,
-          fontSize: 18,
-        }}
-      >
-        Proprietários
-      </Link>
+        <Text style={styles.subtitle}>
+          Gerencie proprietários e veículos cadastrados no estacionamento.
+        </Text>
 
-      <Link
-        href="/veiculo"
-        style={{
-          marginTop: 20,
-          fontSize: 18,
-        }}
-      >
-        Veículos
-      </Link>
+        <View style={styles.buttonContainer}>
+          <AppButton
+            title="Proprietários"
+            onPress={() => router.push('/proprietario')}
+          />
+
+          <AppButton
+            title="Veículos"
+            onPress={() => router.push('/veiculo')}
+          />
+        </View>
+
+        <Text style={styles.footer}>
+          Programação para Dispositivos Móveis II
+        </Text>
+      </View>
     </View>
   );
 }
