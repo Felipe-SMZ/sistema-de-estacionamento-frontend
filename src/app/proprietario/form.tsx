@@ -1,12 +1,12 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import {
-    Pressable,
     Text,
-    TextInput,
-    View,
+    View
 } from 'react-native';
 
+import AppButton from '../../components/AppButton';
+import FormInput from '../../components/FormInput';
 import { proprietarioStyles as styles } from '../../constants/proprietarioStyles';
 import { useProprietarios } from '../../hooks/useProprietarios';
 
@@ -31,19 +31,15 @@ export default function ProprietarioForm() {
             <View style={styles.section}>
                 <Text style={styles.title}>Cadastrar Proprietário</Text>
 
-                <Text style={styles.label}>Nome</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Nome"
                     placeholder="Digite o nome"
                     value={nome}
                     onChangeText={setNome}
                 />
 
-                <Text style={styles.label}>CPF</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="CPF"
                     placeholder="Digite o CPF"
                     value={cpf}
                     onChangeText={setCpf}
@@ -51,12 +47,10 @@ export default function ProprietarioForm() {
                 />
 
                 <View style={{ marginTop: 22 }}>
-                    <Pressable
-                        style={styles.button}
+                    <AppButton
+                        title="Salvar"
                         onPress={handleSubmit}
-                    >
-                        <Text style={styles.buttonText}>Salvar</Text>
-                    </Pressable>
+                    />
                 </View>
             </View>
         </View>

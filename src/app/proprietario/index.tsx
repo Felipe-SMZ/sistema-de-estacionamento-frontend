@@ -2,6 +2,7 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { useCallback } from 'react';
 import { FlatList, Pressable, Text, View } from 'react-native';
 
+import AppButton from '../../components/AppButton';
 import { proprietarioStyles as styles } from '../../constants/proprietarioStyles';
 import { useProprietarios } from '../../hooks/useProprietarios';
 
@@ -44,12 +45,10 @@ export default function ProprietarioList() {
                         <Text style={styles.cpf}>{item.cpf}</Text>
 
                         <View style={styles.row}>
-                            <Pressable
-                                style={[
-                                    styles.button,
-                                    styles.buttonEdit,
-                                    { flex: 1 },
-                                ]}
+                            <AppButton
+                                title="Editar"
+                                variant="edit"
+                                style={{ flex: 1 }}
                                 onPress={() =>
                                     router.push({
                                         pathname: '/proprietario/edit',
@@ -60,34 +59,26 @@ export default function ProprietarioList() {
                                         },
                                     })
                                 }
-                            >
-                                <Text style={styles.buttonText}>Editar</Text>
-                            </Pressable>
-                            
-                            <Pressable
-                                style={[
-                                    styles.button,
-                                    styles.buttonDanger,
-                                    { flex: 1 },
-                                ]}
+                            />
+
+                            <AppButton
+                                title="Excluir"
+                                variant="danger"
+                                style={{ flex: 1 }}
                                 onPress={() => handleDelete(item.id_proprietario)}
-                            >
-                                <Text style={styles.buttonText}>Excluir</Text>
-                            </Pressable>
+                            />
                         </View>
                     </View>
                 )}
             />
 
             <View style={styles.section}>
-                <Pressable
-                    style={styles.button}
-                    onPress={() => router.push('/proprietario/form')}
-                >
-                    <Text style={styles.buttonText}>
-                        Novo Proprietário
-                    </Text>
-                </Pressable>
+                <View style={styles.section}>
+                    <AppButton
+                        title="Novo Proprietário"
+                        onPress={() => router.push('/proprietario/form')}
+                    />
+                </View>
             </View>
         </View>
     );

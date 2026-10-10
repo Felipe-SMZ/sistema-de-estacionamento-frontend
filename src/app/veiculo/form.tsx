@@ -2,12 +2,12 @@ import { Picker } from '@react-native-picker/picker';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-    Pressable,
     Text,
-    TextInput,
-    View,
+    View
 } from 'react-native';
 
+import AppButton from '../../components/AppButton';
+import FormInput from '../../components/FormInput';
 import { veiculoStyles as styles } from '../../constants/veiculoStyles';
 import { useProprietarios } from '../../hooks/useProprietarios';
 import { useVeiculos } from '../../hooks/useVeiculos';
@@ -67,30 +67,24 @@ export default function VeiculoForm() {
                     Cadastrar Veículo
                 </Text>
 
-                <Text style={styles.label}>Placa</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Placa"
                     placeholder="Digite a placa"
                     value={placa}
                     onChangeText={setPlaca}
                     autoCapitalize="characters"
                 />
 
-                <Text style={styles.label}>Ano</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Ano"
                     placeholder="Digite o ano"
                     value={ano}
                     onChangeText={setAno}
                     keyboardType="numeric"
                 />
 
-                <Text style={styles.label}>Mensalidade</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Mensalidade"
                     placeholder="Digite a mensalidade"
                     value={mensalidade}
                     onChangeText={setMensalidade}
@@ -128,14 +122,10 @@ export default function VeiculoForm() {
                 ) : null}
 
                 <View style={{ marginTop: 22 }}>
-                    <Pressable
-                        style={styles.button}
+                    <AppButton
+                        title="Salvar"
                         onPress={handleSubmit}
-                    >
-                        <Text style={styles.buttonText}>
-                            Salvar
-                        </Text>
-                    </Pressable>
+                    />
                 </View>
             </View>
         </View>

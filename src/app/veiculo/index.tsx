@@ -5,11 +5,11 @@ import {
 import { useCallback } from 'react';
 import {
     FlatList,
-    Pressable,
     Text,
-    View,
+    View
 } from 'react-native';
 
+import AppButton from '../../components/AppButton';
 import { veiculoStyles as styles } from '../../constants/veiculoStyles';
 import { useProprietarios } from '../../hooks/useProprietarios';
 import { useVeiculos } from '../../hooks/useVeiculos';
@@ -73,12 +73,10 @@ export default function VeiculoList() {
                         </Text>
 
                         <View style={styles.row}>
-                            <Pressable
-                                style={[
-                                    styles.button,
-                                    styles.buttonEdit,
-                                    { flex: 1 },
-                                ]}
+                            <AppButton
+                                title="Editar"
+                                variant="edit"
+                                style={{ flex: 1 }}
                                 onPress={() =>
                                     router.push({
                                         pathname: '/veiculo/edit',
@@ -91,25 +89,16 @@ export default function VeiculoList() {
                                         },
                                     })
                                 }
-                            >
-                                <Text style={styles.buttonText}>
-                                    Editar
-                                </Text>
-                            </Pressable>
-                            
-                            <Pressable
-                                style={[
-                                    styles.button,
-                                    styles.buttonDanger,
-                                    { flex: 1 },
-                                ]}
+                            />
+
+                            <AppButton
+                                title="Excluir"
+                                variant="danger"
+                                style={{ flex: 1 }}
                                 onPress={() => handleDelete(item.id_veiculo)}
-                            >
-                                <Text style={styles.buttonText}>
-                                    Excluir
-                                </Text>
-                            </Pressable>
+                            />
                         </View>
+
                     </View>
                 )}
                 ListEmptyComponent={
@@ -119,14 +108,12 @@ export default function VeiculoList() {
                 }
             />
             <View style={styles.section}>
-                <Pressable
-                    style={styles.button}
-                    onPress={() => router.push('/veiculo/form')}
-                >
-                    <Text style={styles.buttonText}>
-                        Novo Veículo
-                    </Text>
-                </Pressable>
+                <View style={styles.section}>
+                    <AppButton
+                        title="Novo Veículo"
+                        onPress={() => router.push('/veiculo/form')}
+                    />
+                </View>
             </View>
         </View>
     );

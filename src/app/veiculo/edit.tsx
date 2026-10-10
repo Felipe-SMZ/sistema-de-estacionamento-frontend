@@ -2,12 +2,12 @@ import { Picker } from '@react-native-picker/picker';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-    Pressable,
     Text,
-    TextInput,
-    View,
+    View
 } from 'react-native';
 
+import AppButton from '../../components/AppButton';
+import FormInput from '../../components/FormInput';
 import { veiculoStyles as styles } from '../../constants/veiculoStyles';
 import { useProprietarios } from '../../hooks/useProprietarios';
 import { useVeiculos } from '../../hooks/useVeiculos';
@@ -83,28 +83,22 @@ export default function VeiculoEdit() {
                     Editar Veículo
                 </Text>
 
-                <Text style={styles.label}>Placa</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Placa"
                     value={placa}
                     onChangeText={setPlaca}
                     autoCapitalize="characters"
                 />
 
-                <Text style={styles.label}>Ano</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Ano"
                     value={ano}
                     onChangeText={setAno}
                     keyboardType="numeric"
                 />
 
-                <Text style={styles.label}>Mensalidade</Text>
-
-                <TextInput
-                    style={styles.input}
+                <FormInput
+                    label="Mensalidade"
                     value={mensalidade}
                     onChangeText={setMensalidade}
                     keyboardType="decimal-pad"
@@ -141,16 +135,12 @@ export default function VeiculoEdit() {
                 ) : null}
 
                 <View style={{ marginTop: 22 }}>
-                    <Pressable
-                        style={styles.button}
+                    <AppButton
+                        title="Alterar"
                         onPress={handleSubmit}
-                    >
-                        <Text style={styles.buttonText}>
-                            Alterar
-                        </Text>
-                    </Pressable>
+                    />
                 </View>
             </View>
-        </View>
+        </View >
     );
 }
