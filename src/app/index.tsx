@@ -21,6 +21,16 @@ export default function Home() {
       >
         Proprietários
       </Link>
+
+      <Link
+        href="/veiculo"
+        style={{
+          marginTop: 20,
+          fontSize: 18,
+        }}
+      >
+        Veículos
+      </Link>
     </View>
   );
 }
